@@ -22,5 +22,9 @@ Node* hapusNode(Node* root, string kata);
 void tampilkanSemuaKata(Node* root);
 Node* cari(Node* root, string kata);
 void tampilkanArti(Node* root, string kata);
+bool adminLogin();
+bool userLogin();
+void menuAdmin(Node*& root);
+void menuPengguna(Node* root);
 
 #endif

@@ -133,3 +133,132 @@ void tampilkanArti(Node* root, string kata) {
         cout << "Kata '" << kata << "' tidak ditemukan dalam kamus." << endl;
     }
 }
+
+// Fungsi untuk melakukan login admin
+bool adminLogin() {
+    string username, password;
+    cout << "Masukkan username admin: ";
+    cin >> username;
+    cout << "Masukkan password admin: ";
+    cin >> password;
+
+    // Membuka file untuk membaca data admin
+    ifstream file("admin.txt");
+    if (!file) {
+        cerr << "File admin.txt tidak dapat dibuka." << endl;
+        return false;
+    }
+
+    string storedUsername, storedPassword;
+    bool found = false;
+
+    // Membaca setiap baris dalam file
+    while (file >> storedUsername >> storedPassword) {
+        if (storedUsername == username && storedPassword == password) {
+            found = true;
+            break;
+        }
+    }
+
+    file.close();
+
+    if (found) {
+        cout << "Login admin berhasil!" << endl;
+        return true;
+    } else {
+        cout << "Login admin gagal. Username atau password salah." << endl;
+        return false;
+    }
+}
+
+// Fungsi untuk melakukan login pengguna umum
+bool userLogin() {
+    string username;
+    cout << "Masukkan username pengguna: ";
+    cin >> username;
+
+    // Di sini bisa ditambahkan pengecekan terhadap file pengguna umum (jika diperlukan)
+
+    cout << "Login pengguna berhasil!" << endl;
+    return true;
+}
+
+// Fungsi untuk menampilkan menu admin
+void menuAdmin(Node*& root) {
+    int pilihan;
+    string kata, arti;
+
+    do {
+        cout << "\n===== Kamus Bahasa Sunda (Admin) =====\n";
+        cout << "1. Tambah Kata\n";
+        cout << "2. Tampilkan Semua Kata\n";
+        cout << "3. Hapus Kata\n";
+        cout << "4. Cari Kata\n";
+        cout << "5. Keluar\n";
+        cout << "Masukkan pilihan Anda: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Masukkan kata: ";
+                cin >> kata;
+                cout << "Masukkan arti: ";
+                cin >> arti;
+                root = sisipkan(root, kata, arti);
+                saveToFile(root);
+                break;
+            case 2:
+                cout << "Daftar Kata dalam Kamus:\n";
+                tampilkanSemuaKata(root);
+                break;
+            case 3:
+                cout << "Masukkan kata yang ingin dihapus: ";
+                cin >> kata;
+                root = hapusNode(root, kata);
+                saveToFile(root);
+                break;
+            case 4:
+                cout << "Masukkan kata yang ingin dicari: ";
+                cin >> kata;
+                tampilkanArti(root, kata);
+                break;
+            case 5:
+                cout << "Terima kasih telah menggunakan aplikasi ini!\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 5);
+}
+
+// Fungsi untuk menampilkan menu pengguna umum
+void menuPengguna(Node* root) {
+    int pilihan;
+    string kata;
+
+    do {
+        cout << "\n===== Kamus Bahasa Sunda (Pengguna Umum) =====\n";
+        cout << "1. Tampilkan Semua Kata\n";
+        cout << "2. Cari Kata\n";
+        cout << "3. Keluar\n";
+        cout << "Masukkan pilihan Anda: ";
+        cin >> pilihan;
+
+        switch (pilihan) {
+            case 1:
+                cout << "Daftar Kata dalam Kamus:\n";
+                tampilkanSemuaKata(root);
+                break;
+            case 2:
+                cout << "Masukkan kata yang ingin dicari: ";
+                cin >> kata;
+                tampilkanArti(root, kata);
+                break;
+            case 3:
+                cout << "Terima kasih telah menggunakan aplikasi ini!\n";
+                break;
+            default:
+                cout << "Pilihan tidak valid!\n";
+        }
+    } while (pilihan != 3);
+}
