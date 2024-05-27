@@ -1,35 +1,4 @@
 #include "kamus.h"
-#include <fstream>
-
-Node* buildTreeFromFile(const string& fileName) {
-    Node* root = nullptr;
-    ifstream file(fileName);
-    if (file.is_open()) {
-        string line;
-        while (getline(file, line)) {
-            size_t pos = line.find(',');
-            if (pos != string::npos) {
-                string kata = line.substr(0, pos);
-                string arti = line.substr(pos + 1);
-                root = sisipkanAVL(root, kata, arti);
-            }
-        }
-        file.close();
-    } else {
-        cout << "File " << fileName << " tidak dapat dibuka." << endl;
-    }
-    return root;
-}
-
-void saveToFile(Node* root, const string& fileName) {
-    ofstream file(fileName);
-    if (file.is_open()) {
-        tampilkanSemuaKata(root, file);
-        file.close();
-    } else {
-        cout << "File " << fileName << " tidak dapat dibuka." << endl;
-    }
-}
 
 
 int main() {

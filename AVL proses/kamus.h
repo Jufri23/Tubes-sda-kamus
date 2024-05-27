@@ -14,6 +14,7 @@ struct Node {
     int height;
 };
 
+Node* buildTreeFromFile(const string& fileName);
 Node* sisipkanAVL(Node* root, string kata, string arti);
 Node* hapusNode(Node* root, string kata);
 void tampilkanSemuaKata(Node* root, ofstream& file);
@@ -26,5 +27,6 @@ Node* rotateKanan(Node* root);
 Node* rotate(Node* root);
 Node* successor(Node* root);
 Node* predecessor(Node* root);
+void saveToFile(Node* root, const string& fileName);
 
 #endif
