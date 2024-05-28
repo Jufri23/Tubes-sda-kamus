@@ -1,3 +1,14 @@
+/*TUGAS BESAR MK STRUKTUR DATA DAN ALGORITMA*/
+/*
+                        KELOMPOK 10
+NAMA : FAKHRIE RIZDAN MUZAKKI (075)  MUHAMMAD HAIKAL AL JUFRI (085)
+KELAS : 1C
+PRODI : D3 - TEKNIK INFORMATIKA
+JURUSAN : TEKNIK KOMPUTER DAN INFORMATIKA
+*/
+/*KAMUS BAHASA SUNDA (AVL TREE)*/
+
+
 #ifndef SUNDA_H
 #define SUNDA_H
 
@@ -18,7 +29,7 @@ typedef struct Node
     int height;
 } Node;
 
-/*--------------------------------------------PENERAPAN AVL------------------------------------------------------------*/
+/*---------------------------------------------------PENERAPAN AVL------------------------------------------------*/
 
 //Tinggi Node
 int getHeight(Node *root);
