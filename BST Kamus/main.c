@@ -29,6 +29,7 @@ int main()
             {
                 menuAdmin(&root);
             }
+            break;
         }
         case 2:
             if (userLogin())

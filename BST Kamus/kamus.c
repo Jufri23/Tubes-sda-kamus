@@ -2,37 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 const char *FILE_NAME = "kamus.txt";
-
-/*Node *buildTreeFromFile(const char *fileName)
-{
-    Node *root = NULL;
-    FILE *file = fopen(fileName, "r");
-    if (file != NULL)
-    {
-        char line[256];
-        while (fgets(line, sizeof(line), file))
-        {
-            char *pos = strchr(line, ',');
-            if (pos != NULL)
-            {
-                *pos = '\0';
-                char *kata = line;
-                char *arti = pos + 1;
-                // Remove newline character from arti
-                arti[strcspn(arti, "\n")] = '\0';
-                root = sisipkan(root, kata, arti);
-            }
-        }
-        fclose(file);
-    }
-    else
-    {
-        printf("File %s tidak dapat dibuka.\n", fileName);
-    }
-    return root;
-}*/
 
 void loadFromFile(Node **root)
 {
@@ -220,8 +192,31 @@ bool adminLogin()
     char username[50], password[50];
     printf("Masukkan username admin: ");
     scanf("%s", username);
+
     printf("Masukkan password admin: ");
-    scanf("%s", password);
+    int i = 0;
+    while (i < 50)
+    {
+        password[i] = getch(); // Menggunakan getch() untuk mendapatkan karakter tanpa menampilkannya
+        if (password[i] == '\r')
+        {                       // Jika Enter ditekan
+            password[i] = '\0'; // Mengakhiri string
+            break;
+        }
+        else if (password[i] == '\b')
+        { // Jika Backspace ditekan
+            if (i > 0)
+            {
+                printf("\b \b"); // Menghapus karakter sebelumnya dari layar
+                i--;
+            }
+        }
+        else
+        {
+            printf("*"); // Menampilkan bintang sebagai ganti karakter yang dimasukkan
+            i++;
+        }
+    }
 
     // Membuka file untuk membaca data admin
     FILE *file = fopen("admin.txt", "r");
@@ -248,12 +243,12 @@ bool adminLogin()
 
     if (found)
     {
-        printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
+        printf("\nSelamat datang %s di Kamus Bahasa Sunda!\n", username);
         return true;
     }
     else
     {
-        printf("Login admin gagal. Username atau password salah.\n");
+        printf("\nLogin admin gagal. Username atau password salah.\n");
         return false;
     }
 }
