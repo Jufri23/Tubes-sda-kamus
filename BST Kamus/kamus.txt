@@ -195,3 +195,266 @@ aya,ada,berada,terdapat
 ayana,adanya,keberadaan
 ayat,ayat
 ayeuna,sekarang,kaliini,saatini
+bab,bab
+babagi,berbagi
+babak,babak
+babakan,babakan
+babalantik,berbisnis,berniaga
+babarengan,berbarengan,bersama,bersama-sama,bersamaan
+babasan,ungkapan
+babatok,kepala
+babaturanana,teman-temannya
+bacaan,bacaan
+bacacar,berantakan
+badag,besar
+badagna,besarnya
+badan,raga
+badarat,mendarat
+badminton,bulu tangkis
+baganti,berganti
+bagian,bagian
+bagja,bahagia
+baha,membangkang
+bahan,bahan
+bahe,tumpah
+baheula,dahulu
+baheulana,dulunya
+bajigur,bajigur
+bajo,perampok
+bajoan,bajakan
+bajoang,berjuang
+baju,baju
+bakal,akan,bakal,bakalan
+bakalan,akan dapat
+bakat,bakat
+bako,tembakau
+bakrek,berantakan
+bakti,berbakti
+baktos,bakti
+bal,bola
+balabah,dermawan
+balai,musibah
+balakecrakan,makan-makan
+balangah,lengah
+balanja,belanja
+balarea,masyarakat
+balayar,berlayar
+bale,balai
+baledog,lempar
+balem,bungkam
+bales,balas
+balesan,balasan
+balik,balik,kembali,pulang
+balukarna,akibatnya
+bancang pakewuh,kekacauan
+banding,banding
+bandingan,pembanding
+bangkerut,cemberut
+bangor,nakal
+bangsa,bangsa
+bank,bank
+banteng,banteng
+banting,banting
+bantingan,bantingan
+bantu,bantu
+bantuan,bantuan
+bapa,bapak
+bapana,ayahnya,bapaknya
+baragajul,berandal
+barang,barang,benda
+baraya,kerabat,saudara
+bareng,beserta,bareng
+barentol,bentol-bentol
+baret,baret
+bareto,dahulu
+bareuh,bengkak
+bari,basi,sambil,sembari
+baris,akan
+barudak,anak-anak
+baruk,oh
+basa,bahasa,kala
+basa kosta,bahasa asing
+basajan,sederhana
+basana,bahasanya
+baseuh,basah
+basis,basis
+basisir,pantai,pesisir
+basket,basket
+baso,baso
+batalkeun,batalkan
+batan,daripada
+batang,batang
+batok,tempurung
+batu,batu
+batur,rekan,orang lain
+baturna,rekannya,temannya
+bawa,bawa
+bawang,bawang
+bayabah,berceceran
+bayangkeun,bayangkan
+bayaranana,bayarannya
+bayeungyang,kegerahan
+beak,habis
+beakkeun,habiskan
+bear,pera
+beas,beras
+bebas,bebas
+bebeakan,habis-habisan
+beberesih,pembersihan
+becek,becek
+bedana,bedanya,perbedaannya
+bedil,senapan
+bedilna,senapannya
+bedo,batal
+bedog,golok
+bedug,bedug
+bedugna,bedugnya
+begal,rampok
+begang,kurus
+beger,pubertas
+beja,kabar,pemberitahuan
+bejad,bejat
+bejana,kabarnya
+bekasi,bekasi
+bekel,bekal
+bela,pertahankan
+beleger,utuh
+belut,belut
+bendera,bendera
+bener,benar,bener,betul
+benerna,benarnya,tepatnya
+bengkok,bengkok
+bentang,bintang
+bentes,fasih
+bentukna,bentuknya
+berak,pupuk
+bere,beri
+beres,beres
+berik,kejar
+berkas,berkas
+bersih,bersih
+bet,kok
+betah,betah
+beubeut,banting
+beueus,lembab
+beuheung,leher
+beuki,makin,kian,semakin
+beuleum,bakar
+beuli,beli
+beunang,didapatkan
+beuneur,berisi
+beungbeurat,beban
+beungeut,muka,wajah
+beungeutna,wajahnya
+beunghar,kaya
+beurang,siang
+beurat,berat
+beureum,merah
+beurit,tikus
+beus,bus
+beusi,besi
+beuteung,perut
+beuti,umbi
+bewara,pengumuman
+beye,lunak
+biantara,pidato
+biasa,terbiasa
+biasana,biasanya
+biayana,biayanya
+bibi,bibi
+bibina,bibinya
+bikeun,berikan
+bilateral,bilateral
+bingkeng,melengkung
+bingung,bingung
+binih,benih
+bintara,bintara
+bisa,bisa,dapat
+bisnis,bisnis
+bitis,betis
+bitu,meletus
+biwir,bibir
+blogna,blognya
+blok,blok
+boa-boa,jangan-jangan
+bobok,bobol
+boboko,bakul
+bocor,bocor
+bodas,putih
+boga,punya
+boga aksi,beraksi
+boga anak,beranak
+boga durasi,berdurasi
+boga format,berformat
+boga fungsi,berfungsi
+boga gelar,bergelar
+boga hasrat,berhasrat
+boga kasempetan,berkesempatan
+boga lisensi,berlisensi
+boga maksud,bermaksud
+boga muatan,bermuatan
+boga niat,berniat
+boga pamadegan,berpendapat
+boga pangalaman,berpengalaman
+boga posisi,berposisi
+boga potensi,berpotensi
+boga rencana,berencana
+boga salah,bersalah
+boga sipat,bersifat
+boga skala,berskala
+boga tata,bertata
+boga tujuan,bertujuan
+boga tungtung,berujung
+boga untung,beruntung
+boga warna,berwarna
+bogana,miliknya
+bolos,bolos
+bongbolongan,saran,usulan
+bongkok,bungkuk
+bongoh,lengah
+bool,anus
+borangan,penakut
+bosen,bosan
+brigade,brigade
+buah,buah
+buahna,buahnya
+buaya,buaya
+bubuka,pembukaan
+budak,bocah
+budaya,budaya
+bugang,bangkai
+bujal,pusar,udel
+bujur,pantat
+bukti,bukti
+buku,buku
+bukuna,bukunya
+bulan,bulan
+bulanan,bulanan
+bulao,biru
+bulenan,timbunan
+buleud,bulat
+buligir,telanjang
+bumi,bumi
+bunderan,bundaran,lingkaran
+bungah,suka cita
+bungangang,lega
+bungin,delta
+bungkem,bungkam
+bungkus,bungkus
+bungkusna,bungkusnya
+bungsu,bungsu
+bungur,ungu
+buntut,ekor
+burahay,membara
+buringas,beringas
+burit,sore
+buronan,pelarian
+buronanna,pelariannya
+buru-buru,cepat-cepat
+buruh,buruh
+buruy,berudu
+busik,kusut
+buta,raksasa
+butek,butek
+buuk,rambut
+
