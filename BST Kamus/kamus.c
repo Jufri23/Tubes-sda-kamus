@@ -287,7 +287,7 @@ bool adminRegister()
 bool userLogin()
 {
     char username[50];
-    printf("Masukkan username pengguna: ");
+    printf("Masukkan Nama Anda: ");
     scanf("%s", username);
 
     // Di sini bisa ditambahkan pengecekan terhadap file pengguna umum (jika diperlukan)
