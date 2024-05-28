@@ -25,29 +25,10 @@ int main()
         {
         case 1:
         {
-            int adminPilihan;
-            printf("\n===== Admin =====\n");
-            printf("1. Login\n");
-            printf("2. Registrasi\n");
-            printf("Masukkan pilihan Anda: ");
-            scanf("%d", &adminPilihan);
-
-            if (adminPilihan == 1)
+            if (adminLogin())
             {
-                if (adminLogin())
-                {
-                    menuAdmin(&root);
-                }
+                menuAdmin(&root);
             }
-            else if (adminPilihan == 2)
-            {
-                adminRegister();
-            }
-            else
-            {
-                printf("Pilihan tidak valid.\n");
-            }
-            break;
         }
         case 2:
             if (userLogin())

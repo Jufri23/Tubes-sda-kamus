@@ -248,7 +248,7 @@ bool adminLogin()
 
     if (found)
     {
-        printf("Login admin berhasil!\n");
+        printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
         return true;
     }
     else
@@ -292,7 +292,7 @@ bool userLogin()
 
     // Di sini bisa ditambahkan pengecekan terhadap file pengguna umum (jika diperlukan)
 
-    printf("Login pengguna berhasil!\n");
+    printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
     return true;
 }
 
