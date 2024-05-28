@@ -1,39 +1,42 @@
 #ifndef KAMUS_H
 #define KAMUS_H
 
-#include <iostream>
-#include <string>
-#include <fstream> // tambahkan ini untuk ofstream
-using namespace std;
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
 
-struct Node {
-    string kata;
-    string arti;
-    Node* kiri;
-    Node* kanan;
+#define MAX_STRING_LENGTH 256
+
+typedef struct Node
+{
+    char kata[MAX_STRING_LENGTH];
+    char arti[MAX_STRING_LENGTH];
+    struct Node *kiri;
+    struct Node *kanan;
     int height;
-};
+} Node;
 
-Node* buildTreeFromFile(const string& fileName);
-Node* sisipkanAVL(Node* root, string kata, string arti);
-Node* hapusNode(Node* root, string kata);
-void tampilkanSemuaKata(Node* root);
-void tampilkanSemuaKataHelper(Node* root);
-Node* cari(Node* root, string kata);
-void tampilkanArti(Node* root, string kata);
-int getHeight(Node* root);
-int getBalanceFactor(Node* root);
-Node* rotateKiri(Node* root);
-Node* rotateKanan(Node* root);
-Node* rotate(Node* root);
-Node* successor(Node* root);
-Node* predecessor(Node* root);
-void saveToFile(Node* root, const string& fileName);
+Node *buildTreeFromFile(const char *fileName);
+Node *sisipkanAVL(Node *root, const char *kata, const char *arti);
+Node *hapusNode(Node *root, const char *kata);
+void tampilkanSemuaKata(Node *root);
+void tampilkanSemuaKataHelper(Node *root);
+Node *cari(Node *root, const char *kata);
+void tampilkanArti(Node *root, const char *kata);
+int getHeight(Node *root);
+int getBalanceFactor(Node *root);
+Node *rotateKiri(Node *root);
+Node *rotateKanan(Node *root);
+Node *rotate(Node *root);
+Node *successor(Node *root);
+Node *predecessor(Node *root);
+void saveToFile(Node *root, const char *fileName);
 
-bool adminLogin();
-bool adminRegister();
-bool userLogin();
-void menuAdmin(Node* root);
-void menuPengguna(Node* root);
+int adminLogin();
+int userLogin();
+void menuAdmin(Node *root);
+void menuPengguna(Node *root);
+char *toLowercase(char *str);
 
 #endif
