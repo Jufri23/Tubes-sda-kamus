@@ -1,23 +1,20 @@
-#include "kamus.h"
+/*TUGAS BESAR MK STRUKTUR DATA DAN ALGORITMA*/
+/*
+                            KELOMPOK 10
+NAMA : FAKHRIE RIZDAN MUZAKKI (075)  MUHAMMAD HAIKAL AL JUFRI (085)
+KELAS : 1C
+PRODI : D3 - TEKNIK INFORMATIKA
+JURUSAN : TEKNIK KOMPUTER DAN INFORMATIKA
+*/
+/*KAMUS BAHASA SUNDA (AVL TREE)*/
 
-void tampilkanSelamatDatang()
-{
-    printf("\n");
-    printf("=================================================\n");
-    printf("==     Selamat Datang di Kamus Bahasa Sunda    ==\n");
-    printf("=================================================\n");
-    printf("\n");
-}
+/*--------------------------------------------PENERAPAN AVL------------------------------------------------------------*/
 
-char *toLowercase(char *str)
-{
-    for (int i = 0; str[i]; i++)
-    {
-        str[i] = tolower(str[i]);
-    }
-    return str;
-}
 
+
+#include "sunda.h"
+
+//Tinggi Node
 int getHeight(Node *root)
 {
     if (root == NULL)
@@ -27,34 +24,7 @@ int getHeight(Node *root)
     return root->height;
 }
 
-Node *buildTreeFromFile(const char *fileName)
-{
-    Node *root = NULL;
-    FILE *file = fopen(fileName, "r");
-    if (file != NULL)
-    {
-        char line[MAX_STRING_LENGTH];
-        while (fgets(line, sizeof(line), file))
-        {
-            char *pos = strchr(line, ',');
-            if (pos != NULL)
-            {
-                *pos = '\0';
-                char *kata = line;
-                char *arti = pos + 1;
-                arti[strcspn(arti, "\n")] = '\0'; // Remove newline character
-                root = sisipkanAVL(root, toLowercase(kata), arti);
-            }
-        }
-        fclose(file);
-    }
-    else
-    {
-        printf("File %s tidak dapat dibuka.\n", fileName);
-    }
-    return root;
-}
-
+//Menghitung Keseimbangan
 int getBalanceFactor(Node *root)
 {
     if (root == NULL)
@@ -62,8 +32,9 @@ int getBalanceFactor(Node *root)
         return 0;
     }
     return getHeight(root->kiri) - getHeight(root->kanan);
-}
+} 
 
+//Rotasi kiri
 Node *rotateKiri(Node *root)
 {
     Node *newRoot = root->kanan;
@@ -76,6 +47,7 @@ Node *rotateKiri(Node *root)
     return newRoot;
 }
 
+//Rotasi kanan
 Node *rotateKanan(Node *root)
 {
     Node *newRoot = root->kiri;
@@ -88,6 +60,7 @@ Node *rotateKanan(Node *root)
     return newRoot;
 }
 
+//Rotasi
 Node *rotate(Node *root)
 {
     int balanceFactor = getBalanceFactor(root);
@@ -120,6 +93,7 @@ Node *rotate(Node *root)
     return root;
 }
 
+//insert
 Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
 {
     if (root == NULL)
@@ -129,6 +103,7 @@ Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
         strcpy(root->arti, arti);
         root->kiri = root->kanan = NULL;
         root->height = 1;
+
     }
     else if (strcmp(kata, root->kata) < 0)
     {
@@ -149,6 +124,7 @@ Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
     return root;
 }
 
+//Pengganti
 Node *successor(Node *root)
 {
     if (root == NULL || root->kanan == NULL)
@@ -165,6 +141,7 @@ Node *successor(Node *root)
     return root;
 }
 
+//Pendahulu
 Node *predecessor(Node *root)
 {
     if (root == NULL || root->kiri == NULL)
@@ -181,6 +158,7 @@ Node *predecessor(Node *root)
     return root;
 }
 
+//hapus
 Node *hapusNode(Node *root, const char *kata)
 {
     if (root == NULL)
@@ -234,6 +212,26 @@ Node *hapusNode(Node *root, const char *kata)
     return root;
 }
 
+/*--------------------------------------------Display------------------------------------------------------------*/
+
+// Cari
+Node *cari(Node *root, const char *kata)
+{
+    if (root == NULL || strcmp(root->kata, kata) == 0)
+    {
+        return root;
+    }
+    else if (strcmp(kata, root->kata) < 0)
+    {
+        return cari(root->kiri, kata);
+    }
+    else
+    {
+        return cari(root->kanan, kata);
+    }
+}
+
+// Tampilkan semua kata
 void tampilkanSemuaKata(Node *root)
 {
     if (root != NULL)
@@ -257,22 +255,7 @@ void tampilkanSemuaKataHelper(Node *root)
     }
 }
 
-Node *cari(Node *root, const char *kata)
-{
-    if (root == NULL || strcmp(root->kata, kata) == 0)
-    {
-        return root;
-    }
-    else if (strcmp(kata, root->kata) < 0)
-    {
-        return cari(root->kiri, kata);
-    }
-    else
-    {
-        return cari(root->kanan, kata);
-    }
-}
-
+// Tampilkan arti kata
 void tampilkanArti(Node *root, const char *kata)
 {
     char kataLower[MAX_STRING_LENGTH];
@@ -288,6 +271,38 @@ void tampilkanArti(Node *root, const char *kata)
     }
 }
 
+/*--------------------------------------------FILE------------------------------------------------------------*/
+
+//Membuat Tree
+Node *buildTreeFromFile(const char *fileName)
+{
+    Node *root = NULL;
+    FILE *file = fopen(fileName, "r");
+    if (file != NULL)
+    {
+        char line[MAX_STRING_LENGTH];
+        while (fgets(line, sizeof(line), file))
+        {
+            char *pos = strchr(line, ',');
+            if (pos != NULL)
+            {
+                *pos = '\0';
+                char *kata = line;
+                char *arti = pos + 1;
+                arti[strcspn(arti, "\n")] = '\0'; // Remove newline character
+                root = sisipkanAVL(root, toLowercase(kata), arti);
+            }
+        }
+        fclose(file);
+    }
+    else
+    {
+        printf("File %s tidak dapat dibuka.\n", fileName);
+    }
+    return root;
+}
+
+// Save Ke File
 void saveToFile(Node *root, const char *fileName)
 {
     FILE *file = fopen(fileName, "w");
@@ -312,6 +327,66 @@ void saveToFileHelper(Node *root, FILE *file)
     }
 }
 
+/*----------------------------------------Halaman Utama dan Tampilan--------------------------------------------*/
+
+//Selamat Datang
+void tampilkanSelamatDatang()
+{
+    printf("\n");
+    printf("=================================================\n");
+    printf("==     Selamat Datang di Kamus Bahasa Sunda    ==\n");
+    printf("=================================================\n");
+    printf("\n");
+}
+
+//login user umum
+int userLogin()
+{
+    char username[MAX_STRING_LENGTH];
+    printf("Masukkan Nama Anda: ");
+    scanf("%s", username);
+
+    printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
+    return 1;
+}
+
+
+// Menu untuk user umum
+void menuPengguna(Node *root)
+{
+    int pilihan;
+    char kata[MAX_STRING_LENGTH];
+    do
+    {
+        printf("\n===== Menu Pengguna =====\n");
+        printf("1. Cari Kata\n");
+        printf("2. Tampilkan Semua Kata\n");
+        printf("0. Keluar\n");
+        printf("Masukkan pilihan Anda: ");
+        printf("\n=========================\n");
+        scanf("%d", &pilihan);
+        switch (pilihan)
+        {
+        case 1:
+            printf("Masukkan kata yang ingin dicari: ");
+            scanf("%s", kata);
+            tampilkanArti(root, kata);
+            break;
+        case 2:
+            printf("Daftar Kata dalam Kamus:\n");
+            tampilkanSemuaKata(root);
+            break;
+        case 0:
+            printf("Terima kasih telah menggunakan aplikasi ini!\n");
+            break;
+        default:
+            printf("Pilihan tidak valid!\n");
+        }
+    } while (pilihan != 0);
+}
+
+
+// Login Admin
 int adminLogin()
 {
     char username[MAX_STRING_LENGTH], password[MAX_STRING_LENGTH];
@@ -353,16 +428,7 @@ int adminLogin()
     }
 }
 
-int userLogin()
-{
-    char username[MAX_STRING_LENGTH];
-    printf("Masukkan username pengguna: ");
-    scanf("%s", username);
-
-    printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
-    return 1;
-}
-
+// Menu untuk admin
 void menuAdmin(Node *root)
 {
     int pilihan;
@@ -386,6 +452,7 @@ void menuAdmin(Node *root)
             scanf("%s", arti);
             root = sisipkanAVL(root, toLowercase(kata), arti);
             saveToFile(root, "kamus.txt");
+            printf("Kata \"%s\" berhasil ditambahkan.\n", kata);
             break;
         case 2:
             printf("Daftar Kata dalam Kamus:\n");
@@ -401,6 +468,7 @@ void menuAdmin(Node *root)
             scanf("%s", kata);
             root = hapusNode(root, toLowercase(kata));
             saveToFile(root, "kamus.txt");
+            printf("Kata \"%s\" berhasil dihapus.\n", kata);
             break;
         case 5:
             printf("Logout berhasil.\n");
@@ -411,29 +479,15 @@ void menuAdmin(Node *root)
     } while (pilihan != 5);
 }
 
-void menuPengguna(Node *root)
+
+/*--------------------------------------------Fitur Pendukung------------------------------------------------------------*/
+
+//To Lower Case
+char *toLowercase(char *str)
 {
-    int pilihan;
-    char kata[MAX_STRING_LENGTH];
-    do
+    for (int i = 0; str[i]; i++)
     {
-        printf("\n===== Menu Pengguna =====\n");
-        printf("1. Cari Kata\n");
-        printf("2. Keluar\n");
-        printf("Masukkan pilihan Anda: ");
-        scanf("%d", &pilihan);
-        switch (pilihan)
-        {
-        case 1:
-            printf("Masukkan kata yang ingin dicari: ");
-            scanf("%s", kata);
-            tampilkanArti(root, kata);
-            break;
-        case 2:
-            printf("Terima kasih telah menggunakan aplikasi ini!\n");
-            break;
-        default:
-            printf("Pilihan tidak valid!\n");
-        }
-    } while (pilihan != 2);
+        str[i] = tolower(str[i]);
+    }
+    return str;
 }
