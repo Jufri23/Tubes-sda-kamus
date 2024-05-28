@@ -5,7 +5,7 @@
 
 const char *FILE_NAME = "kamus.txt";
 
-Node *buildTreeFromFile(const char *fileName)
+/*Node *buildTreeFromFile(const char *fileName)
 {
     Node *root = NULL;
     FILE *file = fopen(fileName, "r");
@@ -32,7 +32,7 @@ Node *buildTreeFromFile(const char *fileName)
         printf("File %s tidak dapat dibuka.\n", fileName);
     }
     return root;
-}
+}*/
 
 void loadFromFile(Node **root)
 {

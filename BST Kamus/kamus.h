@@ -12,7 +12,7 @@ typedef struct Node
     struct Node *kanan;
 } Node;
 
-Node *buildTreeFromFile(const char *fileName);
+//Node *buildTreeFromFile(const char *fileName);
 void loadFromFile(Node **root);
 void saveToFile(Node *root);
 void saveToFileHelper(Node *root, FILE *file);
