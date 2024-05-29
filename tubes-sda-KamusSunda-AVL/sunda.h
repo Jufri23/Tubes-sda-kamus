@@ -16,6 +16,7 @@ JURUSAN : TEKNIK KOMPUTER DAN INFORMATIKA
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <conio.h>
 
 #define MAX_STRING_LENGTH 256
 

@@ -8,12 +8,35 @@ JURUSAN : TEKNIK KOMPUTER DAN INFORMATIKA
 */
 /*KAMUS BAHASA SUNDA (AVL TREE)*/
 
-
 /*--------------------------------------------PENERAPAN AVL------------------------------------------------------------*/
 
 #include "sunda.h"
 
-//Tinggi Node
+// Fungsi untuk membaca password dengan karakter disamarkan
+void getPassword(char *password)
+{
+    char ch;
+    int i = 0;
+    while ((ch = getch()) != '\r') // getch() membaca karakter tanpa menampilkannya di layar
+    {
+        if (ch == '\b') // Jika karakter adalah backspace
+        {
+            if (i > 0)
+            {
+                i--;
+                printf("\b \b"); // Hapus karakter terakhir di layar
+            }
+        }
+        else if (i < MAX_STRING_LENGTH - 1)
+        {
+            password[i++] = ch;
+            printf("*"); // Tampilkan simbol bintang
+        }
+    }
+    password[i] = '\0'; // Akhiri string password dengan null character
+}
+
+// Tinggi Node
 int getHeight(Node *root)
 {
     if (root == NULL)
@@ -23,7 +46,7 @@ int getHeight(Node *root)
     return root->height;
 }
 
-//Menghitung Keseimbangan
+// Menghitung Keseimbangan
 int getBalanceFactor(Node *root)
 {
     if (root == NULL)
@@ -31,9 +54,9 @@ int getBalanceFactor(Node *root)
         return 0;
     }
     return getHeight(root->kiri) - getHeight(root->kanan);
-} 
+}
 
-//Rotasi kiri
+// Rotasi kiri
 Node *rotateKiri(Node *root)
 {
     Node *newRoot = root->kanan;
@@ -46,7 +69,7 @@ Node *rotateKiri(Node *root)
     return newRoot;
 }
 
-//Rotasi kanan
+// Rotasi kanan
 Node *rotateKanan(Node *root)
 {
     Node *newRoot = root->kiri;
@@ -59,7 +82,7 @@ Node *rotateKanan(Node *root)
     return newRoot;
 }
 
-//Rotasi
+// Rotasi
 Node *rotate(Node *root)
 {
     int balanceFactor = getBalanceFactor(root);
@@ -92,7 +115,7 @@ Node *rotate(Node *root)
     return root;
 }
 
-//insert
+// insert
 Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
 {
     if (root == NULL)
@@ -102,7 +125,6 @@ Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
         strcpy(root->arti, arti);
         root->kiri = root->kanan = NULL;
         root->height = 1;
-
     }
     else if (strcmp(kata, root->kata) < 0)
     {
@@ -123,7 +145,7 @@ Node *sisipkanAVL(Node *root, const char *kata, const char *arti)
     return root;
 }
 
-//Pengganti
+// Pengganti
 Node *successor(Node *root)
 {
     if (root == NULL || root->kanan == NULL)
@@ -140,7 +162,7 @@ Node *successor(Node *root)
     return root;
 }
 
-//Pendahulu
+// Pendahulu
 Node *predecessor(Node *root)
 {
     if (root == NULL || root->kiri == NULL)
@@ -157,7 +179,7 @@ Node *predecessor(Node *root)
     return root;
 }
 
-//hapus
+// hapus
 Node *hapusNode(Node *root, const char *kata)
 {
     if (root == NULL)
@@ -272,7 +294,7 @@ void tampilkanArti(Node *root, const char *kata)
 
 /*--------------------------------------------FILE------------------------------------------------------------*/
 
-//Membuat Tree
+// Membuat Tree
 Node *buildTreeFromFile(const char *fileName)
 {
     Node *root = NULL;
@@ -328,7 +350,7 @@ void saveToFileHelper(Node *root, FILE *file)
 
 /*----------------------------------------Halaman Utama dan Tampilan--------------------------------------------*/
 
-//Selamat Datang
+// Selamat Datang
 void tampilkanSelamatDatang()
 {
     printf("\n");
@@ -338,7 +360,7 @@ void tampilkanSelamatDatang()
     printf("\n");
 }
 
-//login user umum
+// login user umum
 int userLogin()
 {
     char username[MAX_STRING_LENGTH];
@@ -348,7 +370,6 @@ int userLogin()
     printf("Selamat datang %s di Kamus Bahasa Sunda!\n", username);
     return 1;
 }
-
 
 // Menu untuk user umum
 void menuPengguna(Node *root)
@@ -362,7 +383,6 @@ void menuPengguna(Node *root)
         printf("2. Tampilkan Semua Kata\n");
         printf("0. Keluar\n");
         printf("Masukkan pilihan Anda: ");
-        printf("\n=========================\n");
         scanf("%d", &pilihan);
         switch (pilihan)
         {
@@ -384,7 +404,6 @@ void menuPengguna(Node *root)
     } while (pilihan != 0);
 }
 
-
 // Login Admin
 int adminLogin()
 {
@@ -392,7 +411,8 @@ int adminLogin()
     printf("Masukkan username admin: ");
     scanf("%s", username);
     printf("Masukkan password: ");
-    scanf("%s", password);
+    getPassword(password); // Gunakan fungsi getPassword
+    printf("\n");          // Pindah ke baris baru setelah input password
 
     FILE *file = fopen("admin.txt", "r");
     if (!file)
@@ -478,10 +498,9 @@ void menuAdmin(Node *root)
     } while (pilihan != 5);
 }
 
-
 /*--------------------------------------------Fitur Pendukung------------------------------------------------------------*/
 
-//To Lower Case
+// To Lower Case
 char *toLowercase(char *str)
 {
     for (int i = 0; str[i]; i++)
