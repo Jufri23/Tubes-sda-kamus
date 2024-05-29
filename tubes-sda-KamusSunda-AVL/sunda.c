@@ -8,7 +8,7 @@ JURUSAN : TEKNIK KOMPUTER DAN INFORMATIKA
 */
 /*KAMUS BAHASA SUNDA (AVL TREE)*/
 
-/*--------------------------------------------PENERAPAN AVL------------------------------------------------------------*/
+
 
 #include "sunda.h"
 
@@ -17,24 +17,28 @@ void getPassword(char *password)
 {
     char ch;
     int i = 0;
-    while ((ch = getch()) != '\r') // getch() membaca karakter tanpa menampilkannya di layar
+    while ((ch = getch()) != '\r') 
     {
-        if (ch == '\b') // Jika karakter adalah backspace
+        if (ch == '\b') 
         {
             if (i > 0)
             {
                 i--;
-                printf("\b \b"); // Hapus karakter terakhir di layar
+                printf("\b \b"); 
             }
         }
         else if (i < MAX_STRING_LENGTH - 1)
         {
             password[i++] = ch;
-            printf("*"); // Tampilkan simbol bintang
+            printf("*"); 
         }
     }
-    password[i] = '\0'; // Akhiri string password dengan null character
+    password[i] = '\0'; 
 }
+
+
+/*----------------------------------------------------PENERAPAN AVL------------------------------------------------------------*/
+
 
 // Tinggi Node
 int getHeight(Node *root)
