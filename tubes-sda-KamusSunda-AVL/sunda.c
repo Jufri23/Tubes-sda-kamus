@@ -64,8 +64,10 @@ int getBalanceFactor(Node *root)
 Node *rotateKiri(Node *root)
 {
     Node *newRoot = root->kanan;
-    root->kanan = newRoot->kiri;
+    Node *tempRoot = newRoot->kiri;
+    
     newRoot->kiri = root;
+    root->kanan = tempRoot;
 
     root->height = 1 + (getHeight(root->kiri) > getHeight(root->kanan) ? getHeight(root->kiri) : getHeight(root->kanan));
     newRoot->height = 1 + (getHeight(newRoot->kiri) > getHeight(newRoot->kanan) ? getHeight(newRoot->kiri) : getHeight(newRoot->kanan));
@@ -77,8 +79,10 @@ Node *rotateKiri(Node *root)
 Node *rotateKanan(Node *root)
 {
     Node *newRoot = root->kiri;
-    root->kiri = newRoot->kanan;
+    Node *tempRoot = newRoot->kanan;
+
     newRoot->kanan = root;
+    root->kiri = tempRoot;
 
     root->height = 1 + (getHeight(root->kiri) > getHeight(root->kanan) ? getHeight(root->kiri) : getHeight(root->kanan));
     newRoot->height = 1 + (getHeight(newRoot->kiri) > getHeight(newRoot->kanan) ? getHeight(newRoot->kiri) : getHeight(newRoot->kanan));
