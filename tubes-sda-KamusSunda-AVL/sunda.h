@@ -72,7 +72,7 @@ void saveToFileHelper(Node *root, FILE *file);
 /*----------------------------------------Halaman Utama dan Tampilan--------------------------------------------*/
 
 //Selamat Datang
-void tampilkanSelamatDatang();
+void SelamatDatang();
 //login user umum
 int userLogin();
 // Menu untuk user umum

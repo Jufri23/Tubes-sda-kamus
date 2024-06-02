@@ -17,7 +17,7 @@ int main()
     Node *root = buildTreeFromFile(fileName);
     int pilihan;
 
-    tampilkanSelamatDatang();
+    SelamatDatang();
 
     do
     {
